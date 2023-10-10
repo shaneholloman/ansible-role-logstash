@@ -1,3 +1,5 @@
 ---
-- src: shaneholloman.java
-- src: shaneholloman.elasticsearch
+- name: shaneholloman.java
+  src: https://github.com/shaneholloman/ansible-role-java
+- name: shaneholloman.elasticsearch
+  src: https://github.com/shaneholloman/ansible-role-elasticsearch
