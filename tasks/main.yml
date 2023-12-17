@@ -3,10 +3,13 @@
   ansible.builtin.include_tasks: setup-{{ ansible_os_family }}.yml
 
 - name: Include config tasks
-  ansible.builtin.import_tasks:
-    - config.yml
-    - ssl.yml
-    - plugins.yml
+  ansible.builtin.include_tasks: config.yml
+
+- name: Include SSL tasks
+  ansible.builtin.include_tasks: ssl.yml
+
+- name: Include plugins tasks
+  ansible.builtin.include_tasks: plugins.yml
 
 - name: Ensure Logstash is started and enabled on boot.
   ansible.builtin.service:
