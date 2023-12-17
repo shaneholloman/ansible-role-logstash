@@ -3,7 +3,7 @@
   ansible.builtin.include_tasks: setup-{{ ansible_os_family }}.yml
 
 - name: Include config tasks
-  ansible.builtin.include_tasks:
+  ansible.builtin.import_tasks:
     - config.yml
     - ssl.yml
     - plugins.yml
