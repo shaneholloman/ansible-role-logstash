@@ -4,7 +4,7 @@
 
 An Ansible Role that installs Logstash on RedHat/CentOS Debian/Ubuntu.
 
-Note that this role installs a syslog grok pattern by default; if you want to add more filters, please add them inside the `/etc/logstash/conf.d/` directory. As an example, you could create a file named `13-myapp.conf` with the appropriate grok filter and restart logstash to start using it. Test your grok regex using the [Grok Debugger](http://grokdebug.herokuapp.com/).
+Note that this role installs a syslog grok pattern by default; if you want to add more filters, please add them inside the `/etc/logstash/conf.d/` directory. As an example, you could create a file named `13-myapp.conf` with the appropriate grok filter and `Restart logstash`` to start using it. Test your grok regex using the [Grok Debugger](http://grokdebug.herokuapp.com/).
 
 ## Requirements
 
@@ -86,14 +86,14 @@ If you are seeing high CPU usage from one of the `logstash` processes, and you'r
 ## Example Playbook
 
     - hosts: search
-    
+
       pre_tasks:
         - name: Use Java 8 on Debian/Ubuntu.
           set_fact:
             java_packages:
               - openjdk-8-jdk
           when: ansible_os_family == 'Debian'
-    
+
       roles:
         - shaneholloman.java
         - shaneholloman.elasticsearch

@@ -1,15 +1,17 @@
 ---
 - name: Get list of installed plugins.
-  command: >
+  ansible.builtin.command: >
     ./bin/logstash-plugin list
     chdir={{ logstash_dir }}
   register: logstash_plugins_list
   changed_when: false
 
 - name: Install configured plugins.
-  command: >
+  ansible.builtin.command: >
     ./bin/logstash-plugin install {{ item }}
     chdir={{ logstash_dir }}
+  register: plugin_install_result
   with_items: "{{ logstash_install_plugins }}"
   when: "item not in logstash_plugins_list.stdout"
-  notify: restart logstash
+  notify: Restart logstash
+  changed_when: "'Installing' in plugin_install_result.stdout"
