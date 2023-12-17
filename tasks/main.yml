@@ -1,9 +1,9 @@
 ---
 - name: Include OS Specific setup tasks
-  ansible.builtin.import_tasks: setup-{{ ansible_os_family }}.yml
+  ansible.builtin.include_tasks: setup-{{ ansible_os_family }}.yml
 
 - name: Include config tasks
-  ansible.builtin.import_tasks:
+  ansible.builtin.include_tasks:
     - config.yml
     - ssl.yml
     - plugins.yml
