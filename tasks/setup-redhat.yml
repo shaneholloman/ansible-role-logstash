@@ -1,0 +1,16 @@
+---
+- name: Add Elasticsearch GPG key.
+  ansible.builtin.rpm_key:
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add Logstash repository.
+  ansible.builtin.template:
+    src: logstash.repo.j2
+    dest: /etc/yum.repos.d/logstash.repo
+    mode: '0644'
+
+- name: Install Logstash.
+  ansible.builtin.package:
+    name: '{{ logstash_package }}'
+    state: present
