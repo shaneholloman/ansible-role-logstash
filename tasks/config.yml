@@ -5,7 +5,7 @@
     dest: "/etc/logstash/conf.d/{{ item }}"
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   with_items:
     - 01-beats-input.conf
     - 30-elasticsearch-output.conf
@@ -18,7 +18,7 @@
     dest: "/etc/logstash/conf.d/{{ item }}"
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   with_items:
     - 10-syslog.conf
     - 11-nginx.conf
@@ -34,7 +34,7 @@
     dest: /etc/logstash/conf.d/02-local-syslog-input.conf
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   when: logstash_monitor_local_syslog
   notify: Restart logstash
 

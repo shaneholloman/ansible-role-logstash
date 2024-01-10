@@ -81,7 +81,7 @@ Newer versions of Filebeat and Logstash also require a pkcs8-formatted private k
 If you are seeing high CPU usage from one of the `logstash` processes, and you're using Logstash along with another application running on port 80 on a platform like Ubuntu with upstart, the `logstash-web` process may be stuck in a loop trying to start on port 80, failing, and trying to start again, due to the `restart` flag being present in `/etc/init/logstash-web.conf`. To avoid this problem, either change that line to add a `limit` to the respawn statement, or set the `logstash-web` service to `enabled=no` in your playbook, e.g.:
 
     - name: Ensure logstash-web process is stopped and disabled.
-      service: name=logstash-web state=stopped enabled=no
+      ansible.builtin.service: name=logstash-web state=stopped enabled=no
 
 ## Example Playbook
 
@@ -89,7 +89,7 @@ If you are seeing high CPU usage from one of the `logstash` processes, and you'r
 
       pre_tasks:
         - name: Use Java 8 on Debian/Ubuntu.
-          set_fact:
+          ansible.builtin.set_fact:
             java_packages:
               - openjdk-8-jdk
           when: ansible_os_family == 'Debian'

@@ -1,6 +1,11 @@
 ---
-- name: Include OS Specific setup tasks
-  ansible.builtin.include_tasks: setup-{{ ansible_os_family }}.yml
+- name: Include RedHat setup tasks
+  ansible.builtin.include_tasks: setup-redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: Include Debian setup tasks
+  ansible.builtin.include_tasks: setup-debian.yml
+  when: ansible_os_family == 'Debian'
 
 - name: Include config tasks
   ansible.builtin.include_tasks: config.yml
