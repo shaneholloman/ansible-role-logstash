@@ -1,13 +1,12 @@
 ---
-dependencies: []
-
 galaxy_info:
   role_name: logstash
   author: shaneholloman
   description: Logstash for Linux.
   company: "shaneholloman"
   license: "license (Unlicense)"
-  min_ansible_version: "2.10"
+  min_ansible_version: "2.12"
+
   platforms:
     - name: Debian
       versions:
@@ -15,6 +14,7 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - all
+
   galaxy_tags:
     - web
     - system
@@ -23,3 +23,6 @@ galaxy_info:
     - logs
     - elk
     - logstash
+
+dependencies: []
+
